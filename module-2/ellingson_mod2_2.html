@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CSD 340 Development with HTML and CSS</title>
+
+    <link rel="stylesheet" href="ellingson_mod2_2.css">
+
+    <!-- My advice is to use google schema instead for most of this -->
+
+    <!--
+        Also, the < /> syntax is xhtml syntax; we're not writing xhtml.
+        Tags that close themselves close themselves. The trailing slash
+        is ignored in html5, and can even cause problems in certain
+        browsers without that leading space.
+    -->
+    <meta name="author" content="Isaac Ellingson">
+    <meta name="description" content="Coursework for Module 2.2 of the CSD 340 course.">
+    <meta name="keywords" content="school, demonstration, html, css">
+
+    <!-- Many crawlers for AI training content ignore both this meta and robots.txt -->
+    <meta name="robots" content="nofollow">
+</head>
+
+<body>
+
+<!-- For our purposes, we should use the "section" element instead of a div. -->
+<div id="container">
+    <h1>Assignment 2.2 – Building a Web Page Exercise, Part 2</h1>
+
+    <h2>About Me</h2>
+
+    <p class="intro">My name is Isaac Ellingson. I'm a student here at Bellevue University, where I'm currently studying Java and HTML+CSS. I have over 25 years of experience with Java SE, and I've been using HTML and CSS for longer. You'll notice that this web page source is marked up with comments in several places where I disagree with (but follow) choices mandated by the assignment. All that to say I'm a very experienced and opinionated engineer.
+
+    <!--
+        Again, we're not writing xhtml. <p> closes itself at the next
+        <p> or at the close of the enclosing scope. There's no need to
+        "wrap" in a <p>
+    -->
+    <p>When not doing highly technical things, I play a lot of video games. My all-time favorites tend to be very narrative games like "SEASON: A Letter to the Future", "1000X Resist", and "What Remains of Edith Finch". I also play a lot of factory and survival basebuilding games like "Factorio", cozy games like "Power Wash Simulator", horror games like "SOMA", metroidvanias like "Timespinner", and puzzle games like "Chants of Sennaar".
+
+    <p><span class="sentence">I live out in the middle of Nebraska, in Lexington.</span> I moved out here from Boston to be near my dad, and now I own a house that we're slowly rennovating together. My bathroom is almost done! That's going to be really nice to have out of the way! The house was built about a hundred years ago, and has had one addition to it, resulting in honestly quite a large living room and kitchen for such a compact footprint. It's a bit of a fixer-upper but it was quite a find all the same.
+
+    <p>Things get complicated when people ask me where I'm from. I was born in Blair, NE, right down the hill from where both my parents went to college (the now-closed Dana College, which I went to for a year as well). But not a year later we moved to Melrose, MA. I spent almost a year in Baraboo, WI, about two years in Calloway, NE, and then my late teens in Chelmsford, MA. I've been around. And it means that I don't really "fit in" in Boston, and I don't really "fit in" here. I'm a wildcard. Love it or leave it.
+
+    <hr>
+
+    <!--
+        <p> is highly inappropriate for splitting lines in an address.
+        In this case we *actually do mean line break*, within the same logical paragraph.
+
+        Note: I pulled this address from the welcome center in About Us / Locations
+        https://www.bellevue.edu/about/about-us/locations/
+        So it may differ from the "official address" expected.
+    -->
+    <address>
+        Bellevue University<br>
+        812 Bruin Blvd.<br>
+        Bellevue, NE 68005<br>
+        <a href="https://www.bellevue.edu/">https://www.bellevue.edu/</a>
+    </address>
+</div>
+
+
+
+</body>
+
+</html>

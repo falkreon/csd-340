@@ -1,0 +1,38 @@
+html {
+    background: #113;
+    color: #99F;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #99F;
+}
+
+#container {
+    margin-top: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 0;
+}
+
+h1, h2, h3, h4 {
+    background: #99F;
+    color: #113;
+    border: 1px solid #D6A800;
+    padding: 10px;
+}
+
+a {
+    color: #ccf;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #99f;
+}
+
+a:hover {
+    color: #D6A800;
+}
+
+

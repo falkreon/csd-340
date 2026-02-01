@@ -1,1 +1,48 @@
- 
+html {
+    font-family: sans-serif;
+    background: rgba(0, 0, 0, 0.15);
+}
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+h1 {
+    color: rgba(52, 21, 89, 1.0);
+}
+
+h3 {
+    color: rgba(25, 19, 49, 1.0);
+}
+
+/*
+ * I'm doing a flex grid instead of a legacy grid because it's a strict
+ * superset of grid, and I like flex.
+ */
+#image-gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+
+    margin-top: 10%;
+}
+
+#image-gallery > div {
+    background: #FFF;
+    min-width: 350px;
+    border: 1px solid rgba(0, 0, 0, 0.20);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.20);
+    margin: 4px;
+}
+
+figcaption {
+    text-align: center;
+    font-style: italic;
+    font-size: 0.75em;
+    color: rgba(12, 12, 117, 1.0);
+}
+
+.right-align {
+    float: right;
+}

@@ -1,3 +1,9 @@
+/*
+ * Note: References were made to Google Font Kits, but no actual requirement was specified.
+ * If you want me to use a google font kit (which slows page load), you will actually need
+ * to specify it.
+ */
+
 html {
     background: #113;
     color: #99F;

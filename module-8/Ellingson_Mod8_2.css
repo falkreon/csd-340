@@ -1,0 +1,137 @@
+html {
+    font-family: Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+header {
+    background-color: #b93f08; /* Color copied from example */
+    color: white;
+    margin: 0;
+    padding: 20px;
+    border: none;
+
+    text-align: center;
+}
+
+h1 {
+    font-weight: 400;
+}
+
+#navbar {
+    overflow: hidden;
+    background-color: #aa3905;
+    padding: 20px;
+    margin: -20px; /* Added to correct the header margin so we can sit at the edges.*/
+    border-bottom: 15px solid #996; /* Also copied from example */
+}
+
+#navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#navbar a:hover {
+    background-color: #b93f08;
+    color: #fdc;
+}
+
+#container {
+    margin: 2% 5% 100px 5%;
+    /*margin-top: 2%;
+    margin-left: 5%;
+    margin-right: 5%;*/
+    padding: 10px;
+}
+
+.card {
+    border-radius: 6px 6px; /* cards just like to be a little round */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 50%;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    text-align: center;
+    font-size: 2em;
+    color: #b93f08;
+    font-weight: 400;
+}
+
+.card-content {
+    padding: 2px 16px;
+}
+
+footer {
+    box-sizing: border-box;
+    background-color: #7f2800;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    min-height: 20px;
+    padding: 0 20px 0 20px;
+}
+
+
+footer .copyright {
+    float: left;
+    font-weight: 400;
+    color: white;
+}
+
+footer p {
+    color: white;
+    font-weight: 400;
+    float: right;
+    padding-right: 10px;
+    font-style: italic;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+#movies {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+#movies thead {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+}
+
+/* Not required, but present in example */
+#movies thead td {
+    background-color: #aa3905;
+    color: white;
+    font-weight: bold;
+}
+
+#movies td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}

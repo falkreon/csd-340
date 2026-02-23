@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+CSD340: Web Development
+Module 8.2 Assignment: Build a Webpage Exercise, Part 6
+Isaac Ellingson
+2/22/2026
+-->
+
+    <link rel="stylesheet" href="Ellingson_Mod8_2.css">
+    <title>CSD 340 Web Development with HTML and CSS</title>
+
+</head>
+
+<body>
+    <header>
+        <h1>Assignment 8.2: Build a Web Page - Part 6</h1>
+        <div id="navbar">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+    </header>
+
+    <div id="container">
+        <div class="card">
+            <div class="card-title">
+                Top 5 Favorite Movies
+            </div>
+            <div class="card-content">
+                <p>Again, in no particular order...
+
+                <table id="movies">
+                    <thead><td>Movie Name</td><td>Two Characters</td></thead>
+                    <tr>
+                        <td>Dark City</td>
+                        <td><ul><li>John Murdock<li>Mr. Book</ul></td>
+                    </tr>
+                    <tr>
+                        <td>The Lord of the Rings: Fellowship of the Ring</td>
+                        <td><ul>
+                            <li>Bilbo Baggins
+                            <li>Gandalf the Gray
+                        </ul></td>
+                    </tr>
+                    <tr>
+                        <td>Monty Python and The Holy Grail</td>
+                        <td><ul>
+                            <li>King Arthur
+                            <li>Knight of Ni
+                        </ul></td>
+                    </tr>
+                    <tr>
+                        <td>Labyrinth</td>
+                        <td><ul>
+                            <li>Sarah
+                            <li>Ludo
+                        </ul></td>
+                    </tr>
+                    <tr>
+                        <td>The Dark Crystal</td>
+                        <td><ul>
+                            <li>Jen
+                            <li>Fizzgig
+                        </ul></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <br><br> <!-- Yuck! Let's do this with css margin next time -->
+        <div class="card">
+            <div class="card-title">
+                Top 5 Favorite Foods
+            </div>
+
+            <div class="card-content">
+                <p>I don't know if these are my absolute favorites, and I'm not sure if these are in order. These are just what I could come up with on short notice that I thoroughly enjoy.
+
+                <ol>
+                    <li><a href="https://www.allrecipes.com/recipe/93357/unbelievable-spinach-calzones/">Spinach Calzone (or any calzone really. Probably swap the frozen dough in the recipe for canned pizza dough to make prep easy)</a>
+                    <li><a href="https://www.allrecipes.com/recipe/279434/spicy-tuna-rolls/">Makizumi or nori roll sushi, such as spicy tuna, or spider maki (don't make these at home - ingredient availability is poor here and the linked recipe was the *least horrifying* one I could find)</a>
+                    <li><a href="https://www.allrecipes.com/recipe/46982/pesto-pasta-with-chicken/">Basically any kind of Pasta Al Pesto (careful with this recipe's size, it's huge!)</a>
+                    <li><a href="https://www.allrecipes.com/recipe/14850/crab-rangoon-i/">Crab rangoon</a>
+                    <li><a href="https://www.allrecipes.com/recipe/241705/chef-johns-falafel/">Falafel (boxed falafel mix works just fine too, and pan fried is delicious!)</a>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="copyright"><p>Copyright 2026, Ellingson</div>
+        <p><a href="../index.html">Back to portal...</a>
+    </footer>
+
+</body>
+</html>

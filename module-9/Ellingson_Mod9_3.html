@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+CSD340: Web Development
+Module 9.3 Assignment: JavaScript Exercise, Part 1
+Isaac Ellingson
+2/28/2026
+-->
+
+<head>
+    <title>CSD 340 Development with HTML and CSS</title>
+
+    <link rel="stylesheet" href="Ellingson_Mod9_3.css">
+
+    <script>
+
+// This is not my favorite way to do this. See Ellingson_Mod9_3_variant.html for
+// how we could do this with css classes instead.
+
+// But, you need to know that I can use variables, so here you go!
+
+var word_inventor = "inventor";
+var word_kinsman = "kinsman";
+var word_trumpet = "trumpet";
+var word_cherubim = "cherubim";
+
+function show_inventor() {
+    document.getElementById("word-inventor").innerHTML = word_inventor;
+    document.getElementById("button-inventor").disabled = true;
+}
+
+function show_kinsman() {
+    document.getElementById("word-kinsman").innerHTML = word_kinsman;
+    document.getElementById("button-kinsman").disabled = true;
+}
+
+function show_trumpet() {
+    document.getElementById("word-trumpet").innerHTML = word_trumpet;
+    document.getElementById("button-trumpet").disabled = true;
+}
+
+function show_cherubim() {
+    document.getElementById("word-cherubim").innerHTML = word_cherubim;
+    document.getElementById("button-cherubim").disabled = true;
+}
+
+    </script>
+</head>
+
+<body>
+    <section>
+        <h1>Assignment 9.3: Javascript - Part 1</h1>
+
+        <p>But here, upon this bank and shoal of time,<br>
+        We'ld jump the life to come. But in these cases<br>
+        We still have judgment here; that we but teach<br>
+        Bloody instructions, which, being taught, return<br>
+        To plague the <span id="word-inventor">________</span>: this even-handed justice<br>
+        Commends the ingredients of our poison'd chalice
+
+
+        <p>To our own lips. He's here in double trust<br>
+        First, as I am his <span id="word-kinsman">_______</span> and his subject,<br>
+        Strong both against the deed; then, as his host,<br>
+        Who should against his murderer shut the door,<br>
+        Not bear the knife myself. Besides, this Duncan<br>
+
+        <p>Hath borne his faculties so meek, hath been<br>
+        So clear in his great office, that his virtues<br>
+        Will plead like angels, <span id="word-trumpet">_______</span>-tongued, against<br>
+        The deep damnation of his taking-off;<br>
+        And pity, like a naked new-born babe,<br>
+
+        <p>Striding the blast, or heaven's <span id="word-cherubim">________</span>, horsed<br>
+        Upon the sightless couriers of the air,<br>
+        Shall blow the horrid deed in every eye,<br>
+        That tears shall drown the wind. I have no spur<br>
+        To prick the sides of my intent, but only<br>
+
+        <p>Vaulting ambition, which o'erleaps itself<br>
+        And falls on the other.
+
+        <p>-- Macbeth, Act I, Scene 7
+        <hr>
+
+        <button id="button-inventor" onclick="show_inventor()">Inventor</button>
+        <button id="button-kinsman" onclick="show_kinsman()">Kinsman</button>
+        <button id="button-trumpet" onclick="show_trumpet()">Trumpet</button>
+        <button id="button-cherubim" onclick="show_cherubim()">Cherubim</button>
+    </section>
+</body>
+
+</html>

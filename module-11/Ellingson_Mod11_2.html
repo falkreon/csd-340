@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+CSD340: Web Development
+Module 11.2 Assignment: JavaScript Exercise, Part 3
+Isaac Ellingson
+3/3/2026
+-->
+
+<head>
+    <title>CSD 340 Development with HTML and CSS</title>
+
+    <link rel="stylesheet" href="Ellingson_Mod11_2.css">
+    <!--
+    Yes, I know "type" is not specified here.
+    An important change was made here - https://www.rfc-editor.org/rfc/rfc9239.html#name-iana-considerations
+    making "text/javascript" the default value for type. It is also the only non-obsoleted value available.
+
+    Mozilla now says about it -
+    https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/script/type
+    "Authors are encouraged to omit the attribute if the script refers to JavaScript code rather than
+    specify a MIME type."
+    -->
+    <script src="Ellingson_Mod11_2.js" charset="utf8"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Assignment 11.2: JavaScript - Part 3</h1>
+    </header>
+    <main>
+        <section>
+            <h2>TODO List</h2>
+            <p>
+            <ol id="todo">
+            </ol>
+            </p>
+
+
+            <p>
+            Enter a task below, then click "Add" to save it. You can also delete or sort entries using the buttons.
+            </p>
+            <input type="text" id="entry-box" name="entry-box">
+
+
+
+            <p>Select an item
+            <select id="todo-delete">
+            </select>
+            </p>
+            <div class="buttons">
+                <button class="accept" onclick="onAddButton()">Add</button>
+                <button class="reject" onclick="onDeleteLastButton()">Delete Last Entry</button>
+                <button class="reject" onclick="onDeleteSelectedButton()">Delete Selected Entry</button>
+                <button onclick="onSortButton()">Sort</button>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+CSD340: Web Development
+Module 11.2 Assignment: JavaScript Exercise, Part 3 - Variant
+
+
+This is a variant version. There are two differences from the primary submission:
+
+- The alerts are all gone. You can just see the feedback in realtime, and I'm using replaceChildren() to do
+  this extremely efficiently. It's *really nice* that we can swap out subtrees now without react or angular,
+  or some virtual DOM nonsense.
+
+- The enter key in the input field now adds a todo item (clearing the field), without removing the input
+  cursor. On my machine at least, this makes it super easy to add many items to the list.
+
+Isaac Ellingson
+3/3/2026
+-->
+
+<head>
+    <title>CSD 340 Development with HTML and CSS</title>
+
+    <link rel="stylesheet" href="Ellingson_Mod11_2.css">
+    <script src="Ellingson_Mod11_2_Variant.js" charset="utf8"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Assignment 11.2: JavaScript - Part 3 - Variant</h1>
+    </header>
+    <main>
+        <section>
+            <h2>TODO List</h2>
+            <p>
+            <ol id="todo">
+            </ol>
+            </p>
+
+            <p>
+            This is a variant version. It accomplishes the *intent* of the assignment without meeting all its stated requirements. See the primary submission for literal adherence to the guidelines.
+            </p>
+            <p>
+            Enter a task below, then hit enter or click "Add" to save it. You can also delete or sort entries using the buttons.
+            </p>
+            <input type="text" id="entry-box" name="entry-box">
+
+            <script>
+                document.getElementById("entry-box").addEventListener('keydown', (event) => {
+                    if (event.key == "Enter") {
+                        event.preventDefault();
+                        onAddButton();
+                    }
+                });
+            </script>
+
+            <p>Select an item
+            <select id="todo-delete">
+            </select>
+            </p>
+            <div class="buttons">
+                <button class="accept" onclick="onAddButton()">Add</button>
+                <button class="reject" onclick="onDeleteLastButton()">Delete Last Entry</button>
+                <button class="reject" onclick="onDeleteSelectedButton()">Delete Selected Entry</button>
+                <button onclick="onSortButton()">Sort</button>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

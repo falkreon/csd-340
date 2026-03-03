@@ -1,0 +1,181 @@
+/*
+ * This mini-reset is inspired by https://vale.rocks/posts/css-reset
+ *
+ * the unnamed @layer here gives everything inside low specificity, meaning
+ * it can be overriden by pretty much any css without !important
+ */
+@layer {
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+        background-repeat: no-repeat;
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    html {
+        line-height: 1.5;
+        block-size: 100%;
+    }
+
+    body {
+        min-block-size: 100%;
+    }
+
+    img,
+    iframe,
+    audio,
+    video,
+    canvas {
+        display: block;
+        max-inline-size: 100%;
+        block-size: auto;
+    }
+}
+
+/*
+ * Okay, mini-reset over. On with the show!
+ */
+
+:root {
+    --accent: hsl(300, 50%, 40%);
+    --accent-bright: hsl(from var(--accent) h s calc(l + 15));
+
+    --accent-accept: hsl(120, 50%, 40%);
+    --accent-accept-bright: hsl(from var(--accent-accept) h s calc(l + 15));
+
+    --accent-reject: hsl(0, 50%, 40%);
+    --accent-reject-bright: hsl(from var(--accent-reject) h s calc(l + 15));
+}
+
+* {
+    font-family: sans-serif;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+header {
+    color: #fff;
+    background-color: var(--accent);
+    padding: 12px;
+    text-align: center;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-around;
+
+    background-color: #dde;
+}
+
+section {
+    max-width: 800px;
+    border: 2px solid #777;
+    border-radius: 20px;
+    padding: 30px;
+    margin-left: auto;
+    margin-right: auto;
+
+    background-color: #fff;
+    box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+section p {
+    padding-bottom: 30px;
+}
+
+ul, ol {
+    margin-left: 40px;
+}
+
+li {
+    font-size: 16pt;
+    font-weight: bold;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+input[type=text], input[type=password], input[type=number] {
+    display: block;
+    margin-bottom: 30px;
+    font-size: 14pt;
+    padding: 16px;
+    width: 100%;
+}
+
+select {
+    display: block;
+    margin-top: 8px;
+    margin-bottom: 30px;
+    font-size: 14pt;
+    font-weight: bold;
+    padding: 16px;
+    width: 100%;
+
+    color: #fff;
+    background-color: var(--accent);
+    border: 2px solid #000;
+}
+
+select:hover {
+    background-color: var(--accent-bright);
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    position:relative;
+    min-width: 150px;
+
+    font-size: 14pt;
+    font-weight: bold;
+    padding: 16px;
+    color: #fff;
+    background-color: var(--accent);
+
+    border: solid 2px rgba(0, 0, 0, 0.45);
+    border-radius: 16px;
+    box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.3);
+
+    margin: 10px;
+}
+
+button:hover {
+    background-color: var(--accent-bright);
+}
+
+button:active {
+    top: 2px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+button.accept {
+    background-color: var(--accent-accept);
+}
+
+button.accept:hover {
+    background-color: var(--accent-accept-bright);
+}
+
+button.reject {
+    background-color: var(--accent-reject);
+}
+
+button.reject:hover {
+    background-color: var(--accent-reject-bright);
+}

@@ -33,8 +33,22 @@ function beginUpdateLoop() {
     }
 
     document.getElementById("particle-canvas").addEventListener("mousemove", (e) => {
-        attractor.x = e.offsetX * offsetToCanvas;
-        attractor.y = e.offsetY * offsetToCanvas;
+        attractor = { x: e.offsetX, y: e.offsetY };
+    });
+
+    document.getElementById("particle-canvas").addEventListener("touchmove", (e) => {
+        let x = e.touches[0].pageX;
+        let y = e.touches[0].pageY;
+        let rect = document.getElementById("particle-canvas").getBoundingClientRect();
+        x -= rect.left;
+        y -= rect.top;
+
+        attractor.x = x;
+        attractor.y = y;
+    });
+
+     document.getElementById("particle-canvas").addEventListener("touchstart", (e) => {
+        e.preventDefault();
     });
 
     document.getElementById("particle-canvas").addEventListener("mousedown", (e) => {
@@ -91,7 +105,7 @@ function render(t) {
     canvas.width = field.width;
     canvas.height = field.height;
 
-    let smile = document.getElementById("smile");
+    let smile = document.getElementById("img-smile");
     const ctx = canvas.getContext("2d");
 
     ctx.clearRect(0, 0, 500, 500);

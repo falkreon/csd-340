@@ -60,11 +60,6 @@ body {
     align-items: center;
     gap: 24px;
     padding: 24px;
-
-    background-color: #999;
-}
-
-h1 {
 }
 
 canvas {

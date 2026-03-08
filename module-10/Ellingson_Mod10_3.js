@@ -1,6 +1,7 @@
 /*
  * CSD340: Web Development
  * Module 10.3 Assignment: JavaScript Exercise, Part 2
+ *
  * Isaac Ellingson
  * 3/8/2026
  */
@@ -13,16 +14,42 @@ const minAccel = 0.01;
 const terminalVelocity = 8;
 const repulsion = 0.2;
 
+// A collection of {x, y, vx, vy} objects representing position and velocity
 let particles = [];
+
+// The size of the field the particles will be confined to
 let field = { width: 500, height: 500 };
+
+// The location of an attractor, towards which the particles are attracted
 let attractor = { x: 250, y: 250 };
 
+// If true, the attraction vector will be flipped
 let repulse = false;
 
-let detectedWidth = 500;
-let offsetToCanvas = 1;
 
+/**
+ * Gets the location of a touch event on the particle canvas. This is way more complex than you'd
+ * think, because touch events are in page coordinates, and also you could touch with four fingers.
+ * We just get the first touch registered by the event and ignore the rest for this simple sim.
+ */
+function touchLocation(event) {
+    let touchX = event.touches[0].pageX;
+    let touchY = event.touches[0].pageY;
+    let rect = document.getElementById("particle-canvas").getBoundingClientRect();
+    touchX -= rect.left;
+    touchY -= rect.top;
+
+    return { x: touchX, y: touchY };
+}
+
+
+
+/**
+ * Starts the sim up. MUST be called once after the entire page is loaded - typically this
+ * should happen on body onload.
+ */
 function beginUpdateLoop() {
+    // Create all the particles with random positions and velocities
     for(let i=0; i<100; i++) {
         particles.push({
             x: Math.random() * 450 + 5,
@@ -32,46 +59,62 @@ function beginUpdateLoop() {
         });
     }
 
-    document.getElementById("particle-canvas").addEventListener("mousemove", (e) => {
+    // Set up all the mouse and touch events we need
+    const canvas = document.getElementById("particle-canvas");
+
+    // For the most part, the attractor stays underneath the mouse on desktop
+    canvas.addEventListener("mousemove", (e) => {
         attractor = { x: e.offsetX, y: e.offsetY };
     });
 
-    document.getElementById("particle-canvas").addEventListener("touchmove", (e) => {
-        let x = e.touches[0].pageX;
-        let y = e.touches[0].pageY;
-        let rect = document.getElementById("particle-canvas").getBoundingClientRect();
-        x -= rect.left;
-        y -= rect.top;
+    // Holding the mouse on desktop flips the attractor into repulsion.
+    canvas.addEventListener("mousedown", (e) => { repulse = true; });
+    canvas.addEventListener("mouseup", (e) => { repulse = false; });
 
-        attractor.x = x;
-        attractor.y = y;
-    });
-
-     document.getElementById("particle-canvas").addEventListener("touchstart", (e) => {
-        e.preventDefault();
-    });
-
-    document.getElementById("particle-canvas").addEventListener("mousedown", (e) => {
-        repulse = true;
-    });
-
-    document.getElementById("particle-canvas").addEventListener("mouseup", (e) => {
-        repulse = false;
-    });
-
-    document.getElementById("particle-canvas").addEventListener("mouseout", (e) => {
+    // If we're on desktop and the mouse cursor leaves the field, just snap the attractor
+    // to the middle and
+    canvas.addEventListener("mouseout", (e) => {
         repulse = false;
         attractor.x = field.width / 2;
         attractor.y = field.height / 2;
     });
 
-    console.log("Fun!");
+    // Tapping on mobile moves the attractor, but does not trigger repulsion.
+    canvas.addEventListener("touchstart", (e) => {
+        attractor = touchLocation(e);
+        e.preventDefault();
+    });
+
+    // Dragging with your finger on mobile moves the attractor smoothly.
+    canvas.addEventListener("touchmove", (e) => {
+        attractor = touchLocation(e);
+    });
+
+    // Okay, particles and events are set. Start the sim!
     requestAnimationFrame(updateLoop);
 }
 
+/*
+ *
+ */
 var partialTickTime = 0;
 let lastUpdate;
 
+/**
+ * Every browser paint update, hopefully at least 60 times a second, this gets called,
+ * and manages the master loop for the sim.
+ *
+ * If "partialTickTime" seems confusing, it's a fixed timestep very similar to the
+ * "Free the physics" section in the legendary "Fix Your Timestep" article -
+ *   https://www.gafferongames.com/post/fix_your_timestep/
+ *
+ * So, render happens every time we get an animation frame, but ticks happen at, at most, 60Hz.
+ *
+ * This is actually a pretty fast tick loop. Normally I'd include (prev, next) or (prev, cur)
+ * positions for the particles, and linearly interpolate within the frame, allowing us to drop
+ * the tick loop all the way down to, say, 20Hz. But this is already overkill for the
+ * assignment, so I decided against that for today.
+ */
 function updateLoop(timestamp) {
     let elapsed = 0;
 
@@ -96,10 +139,18 @@ function updateLoop(timestamp) {
     requestAnimationFrame(updateLoop);
 }
 
+
+/**
+ * Updates the field size based on the onscreen size of the canvas, and updates
+ * the canvas's internal geometry to match its css-adjusted size. Note that if we
+ * were to add a border to the canvas, we'd need to subtract that border size from
+ * the rect here otherwise the canvas will just keep increasing its own size.
+ *
+ * Once the field geometry is sorted out, we paint a smiley face centered on where each
+ * particle is.
+ */
 function render(t) {
     let canvas = document.getElementById("particle-canvas");
-    const offsetWidth = canvas.parentElement.offsetWidth;
-
     field.width = canvas.getBoundingClientRect().width;
     field.height = canvas.getBoundingClientRect().height;
     canvas.width = field.width;
@@ -111,7 +162,6 @@ function render(t) {
     ctx.clearRect(0, 0, 500, 500);
 
     for(const particle of particles) {
-
         ctx.drawImage(smile, particle.x - 8, particle.y - 8, 18, 18);
     }
 }
@@ -143,8 +193,15 @@ function clamp(val, limit) {
     }
 }
 
+/**
+ * Given a particle, applies a strong repulsive force from every other particle within a small
+ * radius around it. This is not true collision, and the result is more like flocking. But it
+ * adds a lot of analogue character to the sim, so it's worth the O(n^2) complexity.
+ */
 function doRepulsion(particle) {
     for(const other of particles) {
+        if (other === particle) continue; // Don't repel from self
+
         const dx = other.x - particle.x;
         const dy = other.y - particle.y;
         const d2 = dx*dx + dy*dy;
@@ -156,8 +213,11 @@ function doRepulsion(particle) {
     }
 }
 
+/**
+ * Runs one physics tick. These ticks are fixed-length steps in time, so the simulation is
+ * deterministic.
+ */
 function tick() {
-    console.log("Tick...");
     for(const particle of particles) {
         // Accelerate particle towards attractor
 
@@ -169,9 +229,8 @@ function tick() {
         if (repulse) yAccel = -yAccel;
         particle.vy += acceleration * yAccel;
 
+        // Repel from other particles
         doRepulsion(particle);
-
-
 
         // Cap particle velocity
         particle.vx = clamp(particle.vx, terminalVelocity);

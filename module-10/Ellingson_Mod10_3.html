@@ -4,6 +4,32 @@
 CSD340: Web Development
 Module 10.3 Assignment: JavaScript Exercise, Part 2
 
+"Alter the display based on user input", "use your own graphics"...
+"Create a JavaScript function that is executed when an image is clicked"...
+
+Looking at the example, all that is possible with pure CSS. I gave the CSS answer for the next
+module, but for this last assignment I do, I don't want to sandbag. Let's do something you can
+only do with javascript - an interactive simulation.
+
+============
+
+The img-smile element on this page is a resource used by the javascript; the css has it set to
+display: none so it doesn't impact the page layout or rendering.
+
+The particle-canvas is populated with smiley-face particles that flock around the mouse cursor
+in realtime. Holding the mouse button will cause the smileys to flee instead of following.
+On mobile, tap sets the attractor location and touch-move (dragging your finger) continuously
+moves the attractor with your fingers.
+
+This simple set of physics rules creates a chaotic system where small changes in initial
+conditions and user interactions have dramatic effect on the outcome. I especially like the
+emergent property of the flocking where often, orbits emerge. This is the direct result of
+smileys "avoiding" hitting each other.
+
+Testing showed people were able to figure out most of the functionality without instructions,
+but I did have to make some changes to mobile to make things feel more natural. Anyway, hope
+you like it, I enjoyed making it.
+
 Isaac Ellingson
 3/8/2026
 -->

@@ -1,0 +1,87 @@
+/*
+ * This mini-reset is inspired by https://vale.rocks/posts/css-reset
+ *
+ * the unnamed @layer here gives everything inside low specificity, meaning
+ * it can be overriden by pretty much any css without !important
+ */
+@layer {
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+        background-repeat: no-repeat;
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    html {
+        line-height: 1.5;
+        block-size: 100%;
+    }
+
+    body {
+        min-block-size: 100%;
+    }
+
+    img,
+    iframe,
+    audio,
+    video,
+    canvas {
+        display: block;
+        max-inline-size: 100%;
+        block-size: auto;
+    }
+}
+
+/*
+ * Okay, mini-reset over. On with the show!
+ */
+
+:root {
+    --accent: hsl(300, 50%, 40%);
+    --accent-bright: hsl(from var(--accent) h s calc(l + 15));
+}
+
+* {
+    font-family: sans-serif;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 24px;
+    padding: 24px;
+
+    background-color: #999;
+}
+
+h1 {
+}
+
+canvas {
+    flex: 1;
+    aspect-ratio: 1;
+    max-width: 100%;
+    max-height: 100%;
+
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+    /*border: 4px solid #777;*/
+
+    background-color: black;
+}
+
+.resource {
+    display: none;
+}
